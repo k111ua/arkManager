@@ -49,19 +49,31 @@ const ruleForm = reactive({
   rePassword: ''
 })
 
+const validateUsername = (rule: any, value: any, callback: any) => {
+  if (value === '') {
+    callback(new Error('用户名不能为空'))
+  } else {
+    callback()
+  }
+}
+const validateEmail = (rule: any, value: any, callback: any) => {
+  let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
+  if (value === '') {
+    return callback(new Error('用户名不能为空'))
+  } else if (!reg.test(value)) {
+    return callback(new Error('请输入正确的邮箱格式'))
+  } else {
+    callback()
+  }
+}
+const validatePassword = () => {}
+const validateRePassword = () => {}
+
 const rules = reactive<FormRules>({
-  username: [
-    { required: true, message: 'Please input Activity name', trigger: 'blur' }
-  ],
-  email: [
-    { required: true, message: 'Please input Activity name', trigger: 'blur' }
-  ],
-  password: [
-    { required: true, message: 'Please input activity form', trigger: 'blur' }
-  ],
-  rePassword: [
-    { required: true, message: 'Please input activity form', trigger: 'blur' }
-  ]
+  username: [{ validator: validateUsername, trigger: 'blur' }],
+  email: [{ validator: validateEmail, trigger: 'blur' }],
+  password: [{ validator: validatePassword, trigger: 'blur' }],
+  rePassword: [{ validator: validateRePassword, trigger: 'blur' }]
 })
 </script>
 

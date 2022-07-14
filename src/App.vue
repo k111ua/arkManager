@@ -2,7 +2,4 @@
   <router-view />
 </template>
 
-<style lang="scss">
-.class {
-}
-</style>
+<style lang="scss"></style>

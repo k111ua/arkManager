@@ -1,17 +1,20 @@
 import service from '@/utils/service'
 
-let link = (url,method,data,params)) => {
+let link = (url, method = 'get', data, params) => {
   return new Promise((resolve, reject) => {
-    service.request({
-      url,
-      method,
-      data,
-      params
-    }).then((ok)=>{
+    service
+      .request({
+        url,
+        method,
+        data,
+        params
+      })
+      .then((ok) => {
         resolve(ok)
-    }).catch(()=>{
+      })
+      .catch((err) => {
         reject(err)
-    })
+      })
   })
 }
 

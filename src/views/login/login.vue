@@ -13,7 +13,9 @@
       <el-input v-model="ruleForm.password" type="password" showPassword />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary">登录</el-button>
+      <el-button type="primary" @click="handleLogin(ruleFormRef)">
+        登录
+      </el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -21,6 +23,9 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import link from '@/api/Link'
+import apiUrl from '@/api/url'
+
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
   username: '',
@@ -46,6 +51,20 @@ const rules = reactive<FormRules>({
   username: [{ validator: validateUsername, trigger: 'blur' }],
   password: [{ validator: validatePassword, trigger: 'blur' }]
 })
+
+const handleLogin = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.validate((valid) => {
+    if (valid) {
+      link(apiUrl.url).then((ok: any) => {
+        console.log(ok)
+      })
+    } else {
+      console.log('error submit!')
+      return false
+    }
+  })
+}
 </script>
 
 <style lang="scss" scoped></style>

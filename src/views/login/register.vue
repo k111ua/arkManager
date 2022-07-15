@@ -27,7 +27,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import * as check from '@/utils/verification'
+import * as validator from '@/utils/verification'
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
   username: '',
@@ -44,7 +44,7 @@ const validateUsername = (rule: any, value: any, callback: any) => {
   }
 }
 const validateEmail = (rule: any, value: any, callback: any) => {
-  check.validateEmail(rule, value, callback)
+  validator.validateEmail(rule, value, callback)
 }
 const validatePassword = (rule: any, value: any, callback: any) => {
   if (value === '') {

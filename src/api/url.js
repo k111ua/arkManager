@@ -1,5 +1,5 @@
 let apiUrl = {
-  url: `http://localhost:8888/posts`
+  url: '/register'
 }
 
 export default apiUrl

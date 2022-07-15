@@ -1,19 +1,19 @@
 <template>
   <el-form
-    ref="ruleFormRef"
-    :model="ruleForm"
+    ref="loginFormRef"
+    :model="loginForm"
     :rules="rules"
     labelPosition="top"
     status-icon
   >
     <el-form-item label="用户名" prop="username">
-      <el-input v-model="ruleForm.username" />
+      <el-input v-model="loginForm.username" />
     </el-form-item>
     <el-form-item label="密码" prop="password">
-      <el-input v-model="ruleForm.password" type="password" showPassword />
+      <el-input v-model="loginForm.password" type="password" showPassword />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="handleLogin(ruleFormRef)">
+      <el-button type="primary" @click="handleLogin(loginFormRef)">
         登录
       </el-button>
     </el-form-item>
@@ -26,8 +26,8 @@ import type { FormInstance, FormRules } from 'element-plus'
 import link from '@/api/Link'
 import apiUrl from '@/api/url'
 
-const ruleFormRef = ref<FormInstance>()
-const ruleForm = reactive({
+const loginFormRef = ref<FormInstance>()
+const loginForm = reactive({
   username: '',
   password: ''
 })

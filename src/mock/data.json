@@ -1,8 +1,19 @@
 {
-  "acb": [
-    { "nnn": "123" },
-    { "nnn": "1s23" },
-    { "nnn": "12c3" },
-    { "nnn": "12aa3" }
-  ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

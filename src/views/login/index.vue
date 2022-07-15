@@ -20,8 +20,8 @@
   margin-bottom: 24px;
   border-bottom: 1px solid #ccc;
   .tab-link {
-    width: 80px;
-    margin-right: 12px;
+    width: 56px;
+    margin-right: 16px;
     line-height: 32px;
     font-size: 18px;
     font-weight: bold;

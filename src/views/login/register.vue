@@ -36,7 +36,9 @@ import type { FormInstance, FormRules } from 'element-plus'
 import * as validator from '@/utils/verification'
 import link from '@/api/Link'
 import apiUrl from '@/api/url'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const registerFormRef = ref<FormInstance>()
 const registerForm = reactive({
   username: '',
@@ -88,11 +90,18 @@ const handleRegister = (formEl: FormInstance | undefined) => {
         email: registerForm.email,
         password: registerForm.password
       }
-      link(apiUrl.url).then((ok: any) => {
-        console.log(ok)
+      link(apiUrl.url, 'POST', data).then((ok: any) => {
+        ElMessage({
+          message: '注册成功',
+          type: 'success'
+        })
+        router.push('/entry/login')
       })
     } else {
-      console.log('error submit!')
+      ElMessage({
+        message: '注册失败',
+        type: 'warning'
+      })
       return false
     }
   })

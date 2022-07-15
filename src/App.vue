@@ -3,6 +3,7 @@
 </template>
 
 <style lang="scss">
-.class {
+.class-sample {
+  overflow: auto;
 }
 </style>

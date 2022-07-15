@@ -1,85 +1,40 @@
 <template>
   <div class="login-panel">
-    <el-tabs v-model="tab" @tab-click="tabClick">
-      <el-tab-pane label="登录" name="login"></el-tab-pane>
-      <el-tab-pane label="注册" name="register"></el-tab-pane>
-    </el-tabs>
-    <el-form
-      ref="ruleFormRef"
-      :model="ruleForm"
-      :rules="rules"
-      labelPosition="top"
-      status-icon
-    >
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model="ruleForm.username" />
-      </el-form-item>
-      <el-form-item label="邮箱" prop="email" v-show="tab === 'register'">
-        <el-input v-model="ruleForm.email" />
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="ruleForm.password" type="password" showPassword />
-      </el-form-item>
-      <el-form-item
-        label="重复密码"
-        prop="rePassword"
-        v-show="tab === 'register'"
-      >
-        <el-input v-model="ruleForm.rePassword" type="password" showPassword />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary">
-          {{ tab === 'register' ? '注册' : '登录' }}
-        </el-button>
-      </el-form-item>
-    </el-form>
+    <div class="tab-bar">
+      <router-link to="/entry/login" class="tab-link">登录</router-link>
+      <router-link to="/entry/register" class="tab-link">注册</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { FormInstance, FormRules, TabsPaneContext } from 'element-plus'
-const tabClick = (tab: TabsPaneContext) => {}
-const tab = ref('login')
-const ruleFormRef = ref<FormInstance>()
-const ruleForm = reactive({
-  username: '',
-  email: '',
-  password: '',
-  rePassword: ''
-})
-
-const validateUsername = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('用户名不能为空'))
-  } else {
-    callback()
-  }
-}
-const validateEmail = (rule: any, value: any, callback: any) => {
-  let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
-  if (value === '') {
-    return callback(new Error('用户名不能为空'))
-  } else if (!reg.test(value)) {
-    return callback(new Error('请输入正确的邮箱格式'))
-  } else {
-    callback()
-  }
-}
-const validatePassword = () => {}
-const validateRePassword = () => {}
-
-const rules = reactive<FormRules>({
-  username: [{ validator: validateUsername, trigger: 'blur' }],
-  email: [{ validator: validateEmail, trigger: 'blur' }],
-  password: [{ validator: validatePassword, trigger: 'blur' }],
-  rePassword: [{ validator: validateRePassword, trigger: 'blur' }]
-})
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .login-panel {
   width: 400px;
   margin: 200px auto 0 auto;
+}
+.tab-bar {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #ccc;
+  .tab-link {
+    width: 80px;
+    margin-right: 12px;
+    line-height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.2s;
+    color: #999;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    display: block;
+    position: relative;
+    bottom: -1px;
+    &.router-link-active {
+      color: var(--el-color-primary);
+      border-bottom: 2px solid var(--el-color-primary);
+    }
+  }
 }
 </style>

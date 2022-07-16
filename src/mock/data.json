@@ -1,94 +1,16 @@
 {
   "register": [
     {
-      "id": 1,
       "username": "admin",
       "email": "admin@ark.com",
-      "password": "123"
+      "password": "202cb962ac59075b964b07152d234b70",
+      "id": 1
     },
     {
-      "username": "user",
-      "email": "123@123.cn",
-      "password": "123",
-      "id": 2
-    },
-    {
-      "username": "user",
-      "email": "123@123.cn",
-      "password": "123",
-      "id": 3
-    },
-    {
-      "username": "user",
-      "email": "123@123.cn",
-      "password": "123",
+      "username": "aaa",
+      "email": "111@222.cn",
+      "password": "202cb962ac59075b964b07152d234b70",
       "id": 4
-    },
-    {
-      "username": "user",
-      "email": "123@123.cn",
-      "password": "123",
-      "id": 5
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 6
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 7
-    },
-    {
-      "username": "1123",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 8
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 9
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 10
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 11
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 12
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 13
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 14
-    },
-    {
-      "username": "ark",
-      "email": "ark@ark.cn",
-      "password": "123",
-      "id": 15
     }
   ]
 }

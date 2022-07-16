@@ -37,6 +37,7 @@ import * as validator from '@/utils/verification'
 import link from '@/api/Link'
 import apiUrl from '@/api/url'
 import { useRouter } from 'vue-router'
+import userEncrypt from '@/hook/index'
 
 const router = useRouter()
 const registerFormRef = ref<FormInstance>()
@@ -88,9 +89,9 @@ const handleRegister = (formEl: FormInstance | undefined) => {
       let data = {
         username: registerForm.username,
         email: registerForm.email,
-        password: registerForm.password
+        password: userEncrypt(registerForm.password).value
       }
-      link(apiUrl.url, 'POST', data).then((ok: any) => {
+      link(apiUrl.url, 'post', data).then((ok: any) => {
         ElMessage({
           message: '注册成功',
           type: 'success'

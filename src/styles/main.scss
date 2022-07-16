@@ -11,3 +11,11 @@ a {
     padding: 0 12px;
   }
 }
+
+html,
+body,
+#app,
+.common-layout,
+.el-container {
+  height: 100%;
+}

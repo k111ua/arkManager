@@ -4,6 +4,13 @@ import {
   createWebHashHistory,
   RouteRecordRaw
 } from 'vue-router'
+import {
+  DataAnalysis,
+  Wallet,
+  List,
+  Document,
+  DocumentAdd
+} from '@element-plus/icons-vue'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/entry/login' },
@@ -11,7 +18,53 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     name: 'home',
-    component: () => import('../views/home/index.vue')
+    component: () => import('../views/home/index.vue'),
+    meta: {
+      label: '数据可视化',
+      icon: ''
+    },
+    children: [
+      {
+        path: '/charts',
+        component: () => import('../views/home/children/EchartsView.vue'),
+        meta: {
+          label: '数据可视化',
+          icon: DataAnalysis
+        }
+      },
+      {
+        path: '/pay',
+        component: () => import('../views/home/children/PayList.vue'),
+        meta: {
+          label: '支付',
+          icon: Wallet
+        }
+      },
+      {
+        path: '/user',
+        component: () => import('../views/home/children/UserManagement.vue'),
+        meta: {
+          label: '用户',
+          icon: Document
+        },
+        children: [
+          {
+            path: '/list',
+            component: () => import('../views/home/children/UserList.vue'),
+            meta: {
+              label: '列表'
+            }
+          },
+          {
+            path: '/update',
+            component: () => import('../views/home/children/UserUpdate.vue'),
+            meta: {
+              label: '更新'
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     path: '/entry',

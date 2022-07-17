@@ -5,9 +5,9 @@
         <MainMenu></MainMenu>
       </el-aside>
       <el-container>
-        <el-header>arkAccountManager-RahooToolbox</el-header>
-        <el-main>Main</el-main>
-        <el-footer>Footer</el-footer>
+        <el-header><MainHeader></MainHeader></el-header>
+        <el-main><router-view /></el-main>
+        <el-footer></el-footer>
       </el-container>
     </el-container>
   </div>
@@ -15,4 +15,13 @@
 
 <script lang="ts" setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-header {
+  height: 56px;
+  border-bottom: solid 1px var(--el-menu-border-color);
+}
+.el-footer {
+  height: 56px;
+  border-top: solid 1px var(--el-menu-border-color);
+}
+</style>

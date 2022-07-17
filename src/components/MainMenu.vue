@@ -1,51 +1,57 @@
 <template>
   <el-menu
-    default-active="1"
+    default-active="charts"
     class="main-menu"
+    :collapse="$store.state.HomeModule.mainMenuState"
     @open="handleOpen"
     @close="handleClose"
+    router
   >
-    <el-sub-menu index="1">
-      <template #title>
-        <el-icon><location /></el-icon>
-        <span>Navigator One</span>
-      </template>
-      <el-menu-item-group title="Group One">
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item one</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
+    <template v-for="item in router.options.routes[2].children" key="item.path">
+      <el-sub-menu :index="item.path" v-if="item.children">
+        <template #title>
+          <el-icon><component :is="item.meta.icon"></component></el-icon>
+          <span>{{ item.meta.label }}</span>
+        </template>
+        <el-menu-item :index="child.path" v-for="child in item.children">
+          {{ child.meta.label }}
+        </el-menu-item>
       </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
+      <el-menu-item :index="item.path" v-else>
+        <el-icon><component :is="item.meta.icon"></component></el-icon>
+        <span>{{ item.meta.label }}</span>
+      </el-menu-item>
+    </template>
   </el-menu>
 </template>
 
 <script lang="ts" setup>
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting
-} from '@element-plus/icons-vue'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+
+onMounted(() => {
+  console.log(router.options.routes)
+})
 </script>
 
 <style lang="scss">
 .main-menu {
   height: 100%;
+}
+.el-menu-item {
+  border-right: 3px solid #fff;
+  &:hover {
+    border-right: 3px solid var(--el-menu-hover-bg-color);
+  }
+}
+.el-menu-item.is-active {
+  border-right: 3px solid var(--el-menu-active-color);
 }
 </style>

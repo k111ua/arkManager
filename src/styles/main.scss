@@ -19,3 +19,7 @@ body,
 .el-container {
   height: 100%;
 }
+
+.el-sub-menu .el-menu-item {
+  min-width: 160px;
+}

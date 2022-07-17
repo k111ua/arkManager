@@ -91,7 +91,7 @@ const handleRegister = (formEl: FormInstance | undefined) => {
         email: registerForm.email,
         password: userEncrypt(registerForm.password).value
       }
-      link(apiUrl.url, 'post', data).then((ok: any) => {
+      link(apiUrl.register, 'post', data).then((ok: any) => {
         ElMessage({
           message: '注册成功',
           type: 'success'

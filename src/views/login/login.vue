@@ -35,7 +35,7 @@ import userEncrypt from '@/hook/index'
 const router = useRouter()
 const loginFormRef = ref<FormInstance>()
 const loginForm = reactive({
-  username: '',
+  username: 'admin',
   password: ''
 })
 const formCompleted = ref(false)
@@ -73,7 +73,7 @@ const handleLogin = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       link(
-        apiUrl.url,
+        apiUrl.login,
         'get',
         {},
         {

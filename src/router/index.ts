@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: '/user',
+        path: 'user',
         component: () => import('../views/home/children/UserManagement.vue'),
         meta: {
           label: '用户',
@@ -49,14 +49,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         children: [
           {
-            path: '/list',
+            path: '/user/list',
             component: () => import('../views/home/children/UserList.vue'),
             meta: {
               label: '列表'
             }
           },
           {
-            path: '/update',
+            path: '/user/update',
             component: () => import('../views/home/children/UserUpdate.vue'),
             meta: {
               label: '更新'

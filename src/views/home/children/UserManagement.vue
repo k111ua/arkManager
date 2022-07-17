@@ -1,1 +1,1 @@
-<template><route-view /></template>
+<template><router-view /></template>

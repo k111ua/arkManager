@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    default-active="charts"
+    default-active="/charts"
     class="main-menu"
     :collapse="$store.state.HomeModule.mainMenuState"
     @open="handleOpen"

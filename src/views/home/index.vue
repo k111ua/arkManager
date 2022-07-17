@@ -6,14 +6,19 @@
       </el-aside>
       <el-container>
         <el-header><MainHeader></MainHeader></el-header>
-        <el-main><router-view /></el-main>
+        <el-main>
+          <Breadcrumb></Breadcrumb>
+          <router-view />
+        </el-main>
         <el-footer></el-footer>
       </el-container>
     </el-container>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Breadcrumb from '@/components/Breadcrumb.vue'
+</script>
 
 <style lang="scss" scoped>
 .el-header {

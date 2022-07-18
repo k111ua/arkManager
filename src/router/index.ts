@@ -42,7 +42,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'user',
-        component: () => import('../views/home/children/UserManagement.vue'),
+        component: () => import('../views/home/children/User.vue'),
         meta: {
           label: '用户',
           icon: Document

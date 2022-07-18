@@ -29,16 +29,10 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+const handleOpen = (key: string, keyPath: string[]) => {}
+const handleClose = (key: string, keyPath: string[]) => {}
 
-onMounted(() => {
-  console.log(router.options.routes)
-})
+onMounted(() => {})
 </script>
 
 <style lang="scss">

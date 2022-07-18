@@ -18,7 +18,6 @@ service.interceptors.response.use(
     return response
   },
   function (error) {
-    console.log(error.response.status)
     switch (error.response.status) {
       case 404:
         ElMessage({

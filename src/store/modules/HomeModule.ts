@@ -16,12 +16,15 @@ const HomeModule: Object = {
     bbbb(state: any, data: any) {
       state.dialogState = !state.dialogState
       state.updateData = data
+    },
+    listUpdate(state: any, data: any) {
+      state.listData = data
     }
   },
   actions: {
     updateList(context: any) {
       link(apiUrl.userData).then((ok: any) => {
-        context.commit('listData', ok.data)
+        context.commit('listUpdate', ok.data)
       })
     }
   }

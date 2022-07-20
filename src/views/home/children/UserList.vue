@@ -11,7 +11,10 @@
   <br />
   <el-table
     :data="
-      tableData.data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+      $store.state.HomeModule.listData.slice(
+        (currentPage - 1) * pageSize,
+        currentPage * pageSize
+      )
     "
     border
     style="width: 100%"
@@ -84,9 +87,6 @@ const tableData = reactive({
 })
 onMounted(() => {
   store.dispatch('updateList')
-  link(apiUrl.userData, 'get', {}).then((ok: any) => {
-    tableData.data = ok.data
-  })
 })
 </script>
 

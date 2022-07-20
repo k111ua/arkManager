@@ -57,6 +57,7 @@ const handleSubmit = () => {
     //console.log(ok)
   })
   store.commit('bbbb')
+  window.location.reload()
 }
 </script>
 <style scoped>

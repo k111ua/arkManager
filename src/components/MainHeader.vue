@@ -1,19 +1,20 @@
 <template>
-  <div class="menu-control">
-    <el-icon @click="exc">
-      <CaretRight v-if="$store.state.HomeModule.mainMenuState" />
-      <CaretLeft v-else />
-    </el-icon>
+  <div class="header">
+    <div class="logo"></div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { CaretLeft, CaretRight } from '@element-plus/icons-vue'
-import { useStore } from 'vuex'
-const store = useStore()
-const exc = () => {
-  store.commit('aaaa')
-}
-</script>
+<script lang="ts" setup></script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.header {
+  height: 55px;
+  padding-top: 10px;
+  .logo {
+    background: url(@/assets/logo.png) no-repeat left center;
+    width: 240px;
+    height: 36px;
+    background-size: 208px 36px;
+  }
+}
+</style>

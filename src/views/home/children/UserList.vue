@@ -4,7 +4,7 @@
   <el-form ref="searchFormRef" :model="searchForm" class="search-bar">
     <el-input v-model="searchForm.keyword">
       <template #append>
-        <el-button :icon="Search" @click="handleSearch" type="primary" />
+        <el-button :icon="Search" @click="handleSearch" />
       </template>
     </el-input>
   </el-form>

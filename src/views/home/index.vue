@@ -1,17 +1,15 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px">
-        <MainMenu></MainMenu>
-      </el-aside>
+      <el-header><MainHeader></MainHeader></el-header>
       <el-container>
-        <el-header><MainHeader></MainHeader></el-header>
+        <el-aside width="200px"><MainMenu></MainMenu></el-aside>
         <el-main>
           <Breadcrumb></Breadcrumb>
           <router-view />
         </el-main>
-        <el-footer></el-footer>
       </el-container>
+      <el-footer></el-footer>
     </el-container>
   </div>
 </template>

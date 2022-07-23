@@ -5,6 +5,7 @@ import {
   RouteRecordRaw
 } from 'vue-router'
 import {
+  Folder,
   DataAnalysis,
   Wallet,
   List,
@@ -25,45 +26,45 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: '/charts',
-        component: () => import('../views/home/children/EchartsView.vue'),
+        path: '/modules',
+        component: () => import('../views/home/children/Modules.vue'),
         meta: {
-          label: '数据可视化',
-          icon: DataAnalysis
+          label: '模组',
+          icon: Folder
         }
       },
       {
         path: '/pay',
         component: () => import('../views/home/children/PayList.vue'),
         meta: {
-          label: '支付',
-          icon: Wallet
-        }
-      },
-      {
-        path: 'user',
-        component: () => import('../views/home/children/User.vue'),
-        meta: {
-          label: '用户',
+          label: '账号',
           icon: Document
-        },
-        children: [
-          {
-            path: '/user/list',
-            component: () => import('../views/home/children/UserList.vue'),
-            meta: {
-              label: '列表'
-            }
-          },
-          {
-            path: '/user/update',
-            component: () => import('../views/home/children/UserUpdate.vue'),
-            meta: {
-              label: '更新'
-            }
-          }
-        ]
+        }
       }
+      // {
+      //   path: 'user',
+      //   component: () => import('../views/home/children/User.vue'),
+      //   meta: {
+      //     label: '用户',
+      //     icon: Document
+      //   },
+      //   children: [
+      //     {
+      //       path: '/user/list',
+      //       component: () => import('../views/home/children/UserList.vue'),
+      //       meta: {
+      //         label: '列表'
+      //       }
+      //     },
+      //     {
+      //       path: '/user/update',
+      //       component: () => import('../views/home/children/UserUpdate.vue'),
+      //       meta: {
+      //         label: '更新'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   {

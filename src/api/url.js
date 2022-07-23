@@ -1,7 +1,8 @@
 let apiUrl = {
   login: '/register',
   register: '/register',
-  userData: '/userData'
+  accountData: '/accountData',
+  passenger: '/passenger'
 }
 
 export default apiUrl

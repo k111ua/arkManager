@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    default-active="/charts"
+    default-active="/modules"
     class="main-menu"
     :collapse="$store.state.HomeModule.mainMenuState"
     @open="handleOpen"
@@ -41,6 +41,7 @@ onMounted(() => {})
 }
 .el-menu-item {
   border-right: 3px solid #fff;
+  //font-weight: 500;
   &:hover {
     border-right: 3px solid var(--el-menu-hover-bg-color);
   }

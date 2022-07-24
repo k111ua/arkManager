@@ -34,7 +34,7 @@ const { circleUrl } = toRefs(state)
     background: url(@/assets/images/logo.png) no-repeat left center;
     width: 240px;
     height: 36px;
-    background-size: 208px 36px;
+    background-size: auto 36px;
   }
   .searchbar {
     width: 480px;

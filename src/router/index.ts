@@ -34,12 +34,28 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: '/pay',
-        component: () => import('../views/home/children/PayList.vue'),
+        path: '/account',
+        component: () => import('../views/home/children/User.vue'),
         meta: {
           label: '账号',
           icon: Document
-        }
+        },
+        children: [
+          {
+            path: '/account/newAccount',
+            component: () => import('../views/home/children/NewAccount.vue'),
+            meta: {
+              label: '新增账号'
+            }
+          },
+          {
+            path: '/account/update',
+            component: () => import('../views/home/children/UserUpdate.vue'),
+            meta: {
+              label: '更新'
+            }
+          }
+        ]
       }
       // {
       //   path: 'user',

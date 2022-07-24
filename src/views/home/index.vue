@@ -5,7 +5,12 @@
       <el-container>
         <el-aside width="200px"><MainMenu></MainMenu></el-aside>
         <el-main>
-          <div class="page"><router-view /></div>
+          <div class="page">
+            <Breadcrumb></Breadcrumb>
+            <div style="height: 40px"></div>
+            <PageTitle>角色概览</PageTitle>
+            <router-view />
+          </div>
         </el-main>
       </el-container>
       <el-footer></el-footer>
@@ -15,6 +20,7 @@
 
 <script lang="ts" setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import PageTitle from '../../components/PageTitle.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -23,13 +29,15 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
   border-bottom: solid 1px var(--el-menu-border-color);
 }
 .el-breadcrumb {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.3);
-  width: 100%;
+  position: fixed;
 }
 .el-main {
+  display: block;
+  flex: 1;
+  flex-basis: auto;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: 0;
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -44,6 +52,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
   .page {
     width: 1080px;
     margin: 0 auto;
+    position: relative;
   }
 }
 .el-footer {

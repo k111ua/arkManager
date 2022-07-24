@@ -67,7 +67,7 @@ const handleClick = (index) => {
   background-size: auto;
   position: relative;
   padding: var(--base-padding) calc(var(--base-padding) + 30px)
-    var(--base-padding) calc(var(--base-padding) + 108px);
+    var(--base-padding) calc(var(--base-padding) + 100px);
   cursor: pointer;
   height: 120px;
   border-radius: 6px;
@@ -121,7 +121,7 @@ const handleClick = (index) => {
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(var(--base-padding) + 100px);
+    width: calc(var(--base-padding) + 108px);
     height: 118px;
   }
   .thumbnail {

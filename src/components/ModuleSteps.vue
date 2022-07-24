@@ -1,10 +1,12 @@
 <template>
   <div class="module-state-item">
     <el-avatar :size="72" :src="props.avatarPath" />
-    <div class="owner-name">{{ props.owner }}</div>
-    <el-steps :active="props.state - 1" finish-status="success">
-      <el-step /><el-step /><el-step />
-    </el-steps>
+    <!-- <div class="owner-name">{{ props.owner }}</div> -->
+    <!-- <el-steps :active="props.state - 1" finish-status="success">
+      <el-step class="l1" title="" />
+      <el-step class="l2" title="" />
+      <el-step class="l3" title="" />
+    </el-steps> -->
   </div>
 </template>
 
@@ -25,7 +27,7 @@ const next = () => {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .module-state-item {
   display: flex;
   border-radius: 4px;
@@ -36,6 +38,71 @@ const next = () => {
   .el-steps {
     flex: 1;
     margin-left: 12px;
+    .l1 {
+      .el-step__head {
+        .el-step__icon {
+          background: url(@/assets/images/module_l1.png) no-repeat center;
+        }
+      }
+    }
+    .l2 {
+      .el-step__head {
+        .el-step__icon {
+          background: url(@/assets/images/module_l2.png) no-repeat center;
+        }
+      }
+    }
+    .l3 {
+      .el-step__head {
+        .el-step__icon {
+          background: url(@/assets/images/module_l3.png) no-repeat center;
+        }
+      }
+    }
+    .el-step__icon {
+      width: 49px;
+      height: 45px;
+      font-size: 0;
+      background: #fff;
+    }
+    .el-step__icon.is-text {
+      border-radius: 0;
+      border: none;
+    }
+    .el-step.is-horizontal .el-step__line {
+      height: 2px;
+      top: 60px;
+      left: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background-color: #3c3c3c;
+      .el-step__line-inner {
+        border-width: 1px;
+        border-color: inherit;
+        width: auto;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+    }
+    .el-step:last-of-type .el-step__line {
+      display: block;
+    }
+    .el_step__main {
+      .el-step__title {
+        font-size: 16px;
+        line-height: 38px;
+      }
+      .el-step__description {
+        padding-right: 10%;
+        margin-top: -5px;
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 400;
+      }
+    }
   }
 }
 </style>

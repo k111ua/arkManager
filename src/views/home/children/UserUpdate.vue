@@ -4,12 +4,12 @@
     v-for="item in $store.state.moduleStateList"
     :owner="item.owner"
     :state="item.state"
-    :avatarPath="item.avatarPath"
+    :avatar="item.avatar"
   ></ModuleSteps> -->
   <el-table :data="listData" stripe style="width: 100%" border>
     <el-table-column prop="owner" label="owner" />
     <el-table-column prop="state" label="state" />
-    <el-table-column prop="avatarPath" label="avatarPath" />
+    <el-table-column prop="avatar" label="avatar" />
   </el-table>
   <el-button @click="handleSearch">Active</el-button>
 </template>
@@ -37,7 +37,7 @@ const handleSearch = () => {
     if (ok.data.length !== 0) {
       //console.log(ok.data)
       ok.data.forEach((i) => {
-        avatarList.push(i.avatarPath)
+        avatarList.push(i.avatar)
       })
     } else {
     }
@@ -62,7 +62,7 @@ const handleSearch = () => {
         newModuleStateList[i].owner = ownerList[i]
         newModuleStateList[i].state = stateList[i]
         if (avatarList.length === ownerList.length) {
-          newModuleStateList[i].avatarPath = avatarList[i]
+          newModuleStateList[i].avatar = avatarList[i]
         }
       }
       store.commit('handleModuleStateList', newModuleStateList)

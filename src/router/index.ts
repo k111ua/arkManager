@@ -42,6 +42,13 @@ const routes: Array<RouteRecordRaw> = [
         },
         children: [
           {
+            path: '/account/accountList',
+            component: () => import('../views/home/children/AccountList.vue'),
+            meta: {
+              label: '账号一览'
+            }
+          },
+          {
             path: '/account/newAccount',
             component: () => import('../views/home/children/NewAccount.vue'),
             meta: {

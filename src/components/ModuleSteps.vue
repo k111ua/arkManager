@@ -1,6 +1,6 @@
 <template>
   <div class="module-state-item">
-    <el-avatar :size="72" :src="props.avatarPath" />
+    <el-avatar :size="72" :src="props.avatar" />
     <!-- <div class="owner-name">{{ props.owner }}</div> -->
     <!-- <el-steps :active="props.state - 1" finish-status="success">
       <el-step class="l1" title="" />
@@ -17,7 +17,7 @@ const state = reactive({
     'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 })
 //setup语法糖使用props方法
-const props = defineProps(['owner', 'state', 'avatarPath'])
+const props = defineProps(['owner', 'state', 'avatar'])
 const { circleUrl } = toRefs(state)
 
 const active = ref(0)

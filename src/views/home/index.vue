@@ -50,7 +50,7 @@ import PageTitle from '../../components/PageTitle.vue'
     background-color: var(--el-color-white);
   }
   .page {
-    width: 1080px;
+    width: 1200px;
     margin: 0 auto;
     position: relative;
   }

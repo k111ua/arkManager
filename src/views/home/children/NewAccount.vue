@@ -49,7 +49,8 @@ const form = reactive({
   server: '官服',
   collection: '100%',
   potential: '100%',
-  master: '100%'
+  master: '100%',
+  tag: []
 })
 
 const onSubmit = () => {
@@ -87,7 +88,9 @@ const onSubmit = () => {
         server: form.server,
         collection: form.collection,
         potential: form.potential,
-        master: form.master
+        master: form.master,
+        state: '空闲',
+        tag: []
       },
       {}
     ).then((ok: any) => {

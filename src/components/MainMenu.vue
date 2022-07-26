@@ -47,6 +47,7 @@ onMounted(() => {})
   }
 }
 .el-menu-item.is-active {
+  //background-color: var(--el-menu-hover-bg-color);
   border-right: 3px solid var(--el-menu-active-color);
 }
 </style>

@@ -7,7 +7,8 @@
         </div>
         <div class="title">
           <div class="name">{{ item.name }}</div>
-          <div class="tag">{{ item.type }}</div>
+          <!-- <div class="tag">{{ item.type }}</div> -->
+          <el-tag size="small">{{ item.type }}</el-tag>
         </div>
         <div class="detail">
           <div class="label">特性更新</div>
@@ -93,14 +94,8 @@ const handleClick = (index) => {
       color: var(--el-text-color-primary);
       font-weight: bold;
     }
-    .tag {
-      font-size: 12px;
-      line-height: 18px;
-      height: 18px;
-      border: 1px solid #aaa;
+    .el-tag {
       margin-left: 8px;
-      color: var(--el-text-color-regular);
-      border-radius: 4px;
       padding: 0 4px;
     }
   }

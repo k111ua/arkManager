@@ -14,7 +14,9 @@
   height: 55px;
   font-size: 20px;
   box-sizing: border-box;
-  background-color: #fff;
+  //background: url(@/assets/images/dot_grid.png) repeat-x;
+  //background-size: auto;
+  background: #fff;
   margin-bottom: 16px;
   color: #222;
   .inner {

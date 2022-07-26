@@ -1,47 +1,71 @@
 <template>
-  <div class="module-state-item">
-    <el-avatar :size="72" :src="props.avatar" />
-    <!-- <div class="owner-name">{{ props.owner }}</div> -->
-    <!-- <el-steps :active="props.state - 1" finish-status="success">
-      <el-step class="l1" title="" />
-      <el-step class="l2" title="" />
-      <el-step class="l3" title="" />
-    </el-steps> -->
+  <div class="module-steps">
+    <el-steps :active="active" finish-status="success">
+      <el-step class="l1" title="." />
+      <el-step class="l2" title="." />
+      <el-step class="l3" title="." />
+    </el-steps>
+    <el-radio-group v-model="active" @change="handleChange">
+      <el-radio label="1"></el-radio>
+      <el-radio label="2"></el-radio>
+      <el-radio label="3"></el-radio>
+    </el-radio-group>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue'
-const state = reactive({
-  circleUrl:
-    'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
-})
-//setup语法糖使用props方法
-const props = defineProps(['owner', 'state', 'avatar'])
-const { circleUrl } = toRefs(state)
 
-const active = ref(0)
+//setup语法糖使用props方法
+const props = defineProps(['state'])
+
+const active = ref()
 
 const next = () => {
   if (active.value++ > 2) active.value = 0
 }
+const handleChange = () => {
+  console.log(111)
+}
 </script>
 
 <style lang="scss">
-.module-state-item {
-  display: flex;
-  border-radius: 4px;
-  border: 1px solid var(--el-color-info-light-7);
-  cursor: pointer;
-  padding: 16px;
-  margin-bottom: 16px;
-  .el-steps {
+.module-steps {
+  width: 100%;
+  height: 72px;
+  position: relative;
+  .el-radio-group {
     flex: 1;
-    margin-left: 12px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 999;
+    .el-radio {
+      width: 50px;
+      height: 72px;
+      //background: rgba(0, 0, 0, 0.08);
+      font-size: 0;
+      .el-radio__input {
+        display: none;
+      }
+      .el-radio__label {
+        display: none;
+      }
+    }
+  }
+  .el-steps {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex: 1;
+    z-index: 10;
+    height: 72px;
     .l1 {
       .el-step__head {
         .el-step__icon {
-          background: url(@/assets/images/module_l1.png) no-repeat center;
+          background: url(@/assets/images/module_l1.png) no-repeat left center;
         }
       }
     }
@@ -60,7 +84,7 @@ const next = () => {
       }
     }
     .el-step__icon {
-      width: 49px;
+      width: 50px;
       height: 45px;
       font-size: 0;
       background: #fff;
@@ -70,37 +94,47 @@ const next = () => {
       border: none;
     }
     .el-step.is-horizontal .el-step__line {
-      height: 2px;
-      top: 60px;
-      left: 0;
+      bottom: 5px;
+      left: 12px;
+      top: auto;
       right: 0;
+      height: 2px;
+      background-color: #3c3c3c;
+      //opacity: 0.2;
+      .el-step__line-inner {
+        display: none;
+      }
+    }
+  }
+  .el-step__head {
+    height: 100%;
+  }
+  .el-step__head.is-process {
+    opacity: 0.2;
+  }
+  .el-step__head.is-success {
+    opacity: 1;
+  }
+  .el-step__head.is-wait {
+    opacity: 0.2;
+  }
+  .el-step__main {
+    position: absolute;
+    bottom: 0;
+    .el-step__title {
+      font-size: 0;
+      display: none;
+    }
+    .el-step__description {
       width: 12px;
       height: 12px;
+      padding-right: 0;
       background-color: #3c3c3c;
-      .el-step__line-inner {
-        border-width: 1px;
-        border-color: inherit;
-        width: auto;
-        height: 2px;
-        position: absolute;
-        left: 0;
-        right: 0;
+      &.is-wait {
+        opacity: 0.2;
       }
-    }
-    .el-step:last-of-type .el-step__line {
-      display: block;
-    }
-    .el_step__main {
-      .el-step__title {
-        font-size: 16px;
-        line-height: 38px;
-      }
-      .el-step__description {
-        padding-right: 10%;
-        margin-top: -5px;
-        font-size: 12px;
-        line-height: 20px;
-        font-weight: 400;
+      &.is-process {
+        opacity: 0.2;
       }
     }
   }

@@ -17,7 +17,9 @@
       </div>
     </el-col>
   </el-row>
+  <ModuleSteps />
 </template>
+
 <script setup>
 import { useStore } from 'vuex'
 const store = useStore()
@@ -52,6 +54,7 @@ const handleClick = (index) => {
   moduleList[index].class = 'module-item active'
 }
 </script>
+
 <style lang="scss" scoped>
 .module-selector {
   display: flex;

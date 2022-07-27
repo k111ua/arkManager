@@ -10,7 +10,7 @@ import {
   Wallet,
   List,
   Document,
-  DocumentAdd
+  House
 } from '@element-plus/icons-vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -25,6 +25,14 @@ const routes: Array<RouteRecordRaw> = [
       icon: ''
     },
     children: [
+      {
+        path: '/landing',
+        component: () => import('../views/home/children/Landing.vue'),
+        meta: {
+          label: '首页',
+          icon: House
+        }
+      },
       {
         path: '/modules',
         component: () => import('../views/home/children/Modules.vue'),

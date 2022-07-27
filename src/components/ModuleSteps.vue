@@ -1,16 +1,14 @@
 <template>
   <div class="module-steps">
     <el-steps :active="Number(active)" finish-status="success">
-      <el-step class="l0" title="." />
-      <el-step class="l1" title="." />
-      <el-step class="l2" title="." />
-      <el-step class="l3" title="." />
+      <el-step
+        :class="item"
+        title="."
+        v-for="item in ['l0', 'l1', 'l2', 'l3']"
+      />
     </el-steps>
     <el-radio-group v-model="active" @change="handleChange">
-      <el-radio label="1"></el-radio>
-      <el-radio label="2"></el-radio>
-      <el-radio label="3"></el-radio>
-      <el-radio label="4"></el-radio>
+      <el-radio :label="item" v-for="item in ['1', '2', '3', '4']"></el-radio>
     </el-radio-group>
   </div>
 </template>

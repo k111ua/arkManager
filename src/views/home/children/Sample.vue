@@ -92,10 +92,10 @@ const deleteRow = (index: number) => {
 }
 const handleChange = () => {
   const params = {}
-  if (form.m1 !== '' && form.m1 !== '0') {
+  if (form.m1 !== '') {
     params.m1 = form.m1
   }
-  if (form.m2 !== '' && form.m1 !== '0') {
+  if (form.m1 !== '') {
     params.m2 = form.m2
   }
   link(apiUrl.any + 'passenger', 'get', {}, params).then((ok: any) => {

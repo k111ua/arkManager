@@ -34,6 +34,14 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: '/sample',
+        component: () => import('../views/home/children/Sample.vue'),
+        meta: {
+          label: '测试',
+          icon: Folder
+        }
+      },
+      {
         path: '/account',
         component: () => import('../views/home/children/User.vue'),
         meta: {

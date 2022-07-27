@@ -1,24 +1,19 @@
 <template>
   <ModuleTab></ModuleTab>
-  <!-- <ModuleSteps
-    v-for="item in $store.state.moduleStateList"
-    :owner="item.owner"
-    :state="item.state"
-    :avatar="item.avatar"
-  ></ModuleSteps> -->
-  <el-table :data="listData" stripe style="width: 100%" border>
+  <!-- <el-table :data="listData" stripe style="width: 100%" border>
     <el-table-column prop="owner" label="owner" />
     <el-table-column prop="state" label="state" />
     <el-table-column prop="avatar" label="avatar" />
   </el-table>
-  <el-button @click="handleSearch">Active</el-button>
+  <el-button @click="handleSearch">Active</el-button> -->
 </template>
 
 <script lang="ts" setup>
 import link from '@/api/Link'
 import apiUrl from '@/api/url'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
+const aaa = ref(1)
 const store = useStore()
 const avatarList = []
 const ownerList = []

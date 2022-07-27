@@ -1,4 +1,5 @@
 <template>
+  <el-form></el-form>
   <el-table :data="table.data" stripe style="width: 100%" border>
     <el-table-column prop="id" label="#" type="index" width="50" />
     <el-table-column prop="owner" label="账号" />

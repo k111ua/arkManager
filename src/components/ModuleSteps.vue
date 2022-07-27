@@ -1,6 +1,7 @@
 <template>
   <div class="module-steps">
-    <el-steps :active="active" finish-status="success">
+    <el-steps :active="Number(active)" finish-status="success">
+      <el-step class="l0" title="." />
       <el-step class="l1" title="." />
       <el-step class="l2" title="." />
       <el-step class="l3" title="." />
@@ -9,29 +10,24 @@
       <el-radio label="1"></el-radio>
       <el-radio label="2"></el-radio>
       <el-radio label="3"></el-radio>
+      <el-radio label="4"></el-radio>
     </el-radio-group>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, toRefs } from 'vue'
+import { ref } from 'vue'
+const active = ref(1)
 
-//setup语法糖使用props方法
-const props = defineProps(['state'])
+const emit = defineEmits(['step'])
 
-const active = ref()
-
-const next = () => {
-  if (active.value++ > 2) active.value = 0
-}
 const handleChange = () => {
-  console.log(111)
+  emit('step', active)
 }
 </script>
 
 <style lang="scss">
 .module-steps {
-  width: 100%;
   height: 72px;
   position: relative;
   .el-radio-group {
@@ -62,6 +58,21 @@ const handleChange = () => {
     flex: 1;
     z-index: 10;
     height: 72px;
+    .l0 {
+      opacity: 0.5;
+      .el-step__head {
+        .el-step__icon {
+          background: url(@/assets/images/module_l0.png) no-repeat left center;
+        }
+      }
+    }
+    .l1 {
+      .el-step__head {
+        .el-step__icon {
+          //background: url(@/assets/images/module_l1.png) no-repeat left center;
+        }
+      }
+    }
     .l1 {
       .el-step__head {
         .el-step__icon {
@@ -84,8 +95,8 @@ const handleChange = () => {
       }
     }
     .el-step__icon {
-      width: 50px;
-      height: 45px;
+      width: 48px;
+      height: 44px;
       font-size: 0;
       background: #fff;
     }

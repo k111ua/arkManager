@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="16" class="module-selector">
     <el-col :span="12" v-for="item in moduleList">
-      <div :class="item.class" @Click="handleClick(item.index)">
+      <div class="module-item" @Click="handleClick(item.index)">
         <div class="img-container">
           <img class="thumbnail" :src="item.thumbnail" />
         </div>
@@ -14,10 +14,10 @@
           <div class="label">特性更新</div>
           <div class="value">{{ item.detail }}</div>
         </div>
+        <ModuleSteps></ModuleSteps>
       </div>
     </el-col>
   </el-row>
-  <ModuleSteps />
 </template>
 
 <script setup>
@@ -29,7 +29,6 @@ const basePath = 'https://prts.wiki/images/'
 const moduleList = reactive([
   {
     index: 0,
-    class: 'module-item',
     name: '电磁调节器',
     type: 'CHA-X',
     detail:
@@ -38,7 +37,6 @@ const moduleList = reactive([
   },
   {
     index: 1,
-    class: 'module-item',
     name: '王权金币',
     type: 'CHA-Y',
     detail:
@@ -67,13 +65,13 @@ const handleClick = (index) => {
   //height: 80px;
   --base-padding: 16px;
   border: 1px solid var(--el-color-info-light-5);
-  background: url(@/assets/images/dot_bg.png) no-repeat top right;
+  background: url(@/assets/images/dot_bg.png) no-repeat 118% 100%;
   background-size: auto;
   position: relative;
   padding: var(--base-padding) calc(var(--base-padding) + 30px)
     var(--base-padding) calc(var(--base-padding) + 100px);
   cursor: pointer;
-  height: 120px;
+  //height: 120px;
   border-radius: 6px;
   margin-bottom: calc(var(--base-padding) + 0px);
   margin-right: calc(var(--base-padding) + 0px);
@@ -103,6 +101,7 @@ const handleClick = (index) => {
     }
   }
   .detail {
+    margin-bottom: 12px;
     .label {
       font-size: 12px;
       line-height: 24px;

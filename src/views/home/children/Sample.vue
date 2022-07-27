@@ -1,92 +1,31 @@
 <template>
   <div class="filter">
     <el-form :model="form">
-      <el-form-item>
-        <el-select
-          @change="handleChange"
-          v-model="form.state"
-          clearable
-          placeholder="状态"
-        >
-          <el-option label="空闲" value="空闲" />
-          <el-option label="使用中" value="使用中" />
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-select
-          @change="handleChange"
-          v-model="form.server"
-          clearable
-          placeholder="服务器"
-        >
-          <el-option label="官服" value="官服" />
-          <el-option label="B服" value="B服" />
-        </el-select>
-      </el-form-item>
+      <ModuleSteps @step="m1"></ModuleSteps>
+      <ModuleSteps @step="m2"></ModuleSteps>
       <div class="action">
         <el-button @click="resetForm()">清空筛选条件</el-button>
       </div>
     </el-form>
   </div>
   <el-table :data="table.data" stripe style="width: 100%" border>
-    <!-- <el-table-column prop="id" label="#" type="index" width="50" /> -->
-    <!-- <el-table-column prop="avatar" label="avatar" /> -->
-    <el-table-column label="账号" width="300">
-      <template #default="scope">
-        <div class="owner-profile" width="300">
-          <img
-            class="avatar"
-            :src="
-              scope.row.avatar
-                ? scope.row.avatar
-                : 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
-            "
-          />
-          <div class="owner">{{ scope.row.owner }}</div>
-          <div class="tags" v-if="scope.row.tag.length !== 0">
-            <el-tag size="small" v-for="item in scope.row.tag">
-              {{ item }}
-            </el-tag>
-            <!-- <div class="tag" v-for="item in scope.row.tag">{{ item }}</div> -->
-          </div>
-          <div class="tags" v-else>
-            <el-tag size="small">underfine</el-tag>
-            <!-- <div class="tag" v-for="item in scope.row.tag">{{ item }}</div> -->
-          </div>
-        </div>
-      </template>
+    <el-table-column prop="id" label="#" type="index" width="50" />
+    <el-table-column prop="owner" label="账号" />
+    <el-table-column prop="potential" label="潜能" />
+    <el-table-column label="专精">
+      <el-table-column prop="s1" label="1技能" />
+      <el-table-column prop="s2" label="2技能" />
+      <el-table-column prop="s3" label="3技能" />
     </el-table-column>
-    <el-table-column prop="contract" label="联系人" />
-    <!-- <el-table-column prop="potential" label="潜能" width="80" /> -->
-    <!-- <el-table-column prop="master" label="专精" width="80" /> -->
-    <!-- <el-table-column label="图鉴" width="80">
-      <template #default="scope">
-        <el-progress
-          :text-inside="true"
-          :stroke-width="24"
-          :percentage="scope.row.collection.replace('%', '')"
-        />
-      </template>
-    </el-table-column> -->
-    <el-table-column prop="state" label="状态" />
-    <el-table-column prop="duration" label="状态时长" />
-    <el-table-column prop="server" label="服务器" />
-    <el-table-column prop="user" label="谁在用" />
-    <el-table-column prop="tip" label="备注" />
+    <el-table-column label="模组进度">
+      <el-table-column prop="m1" label="模组1" />
+      <el-table-column prop="m2" label="模组2" />
+    </el-table-column>
     <el-table-column label="操作">
-      <template #default="scope">
-        <el-button
-          link
-          type="danger"
-          size="small"
-          @click.prevent="deleteRow(scope.$index)"
-        >
-          删除
-        </el-button>
-        <el-button link type="primary" size="small" @click.prevent="">
-          借用
-        </el-button>
-      </template>
+      <div class="action-column">
+        <el-button type="primary" link>使用</el-button>
+        <el-button type="primary" link>预约</el-button>
+      </div>
     </el-table-column>
   </el-table>
 
@@ -114,9 +53,18 @@ const tableTotal = ref(1)
 
 //表单数据
 const form = reactive({
-  server: '',
-  state: ''
+  m1: '',
+  m2: ''
 })
+
+const m1 = (a) => {
+  form.m1 = a.value - 1
+  handleChange()
+}
+const m2 = (b) => {
+  form.m2 = b.value - 1
+  handleChange()
+}
 
 //表单数据初始化
 const table = reactive({
@@ -144,13 +92,13 @@ const deleteRow = (index: number) => {
 }
 const handleChange = () => {
   const params = {}
-  if (form.server !== '') {
-    params.server = form.server
+  if (form.m1 !== '' && form.m1 !== '0') {
+    params.m1 = form.m1
   }
-  if (form.state !== '') {
-    params.state = form.state
+  if (form.m2 !== '' && form.m1 !== '0') {
+    params.m2 = form.m2
   }
-  link(apiUrl.accountData, 'get', {}, params).then((ok: any) => {
+  link(apiUrl.any + 'passenger', 'get', {}, params).then((ok: any) => {
     tableTotal.value = ok.data.length
     if (ok.data.length !== 0) {
       response.data = ok.data
@@ -175,8 +123,8 @@ const handleCurrentChange = (val: number) => {
 }
 
 const resetForm = () => {
-  form.server = ''
-  form.state = ''
+  form.m1 = ''
+  form.m2 = ''
   handleChange()
 }
 
@@ -188,7 +136,7 @@ const pageDevide = () => {
   )
 }
 onMounted(() => {
-  link(apiUrl.accountData, 'get', {}, {}).then((ok: any) => {
+  link(apiUrl.any + 'passenger', 'get', {}, {}).then((ok: any) => {
     tableTotal.value = ok.data.length
     if (ok.data.length !== 0) {
       response.data = ok.data

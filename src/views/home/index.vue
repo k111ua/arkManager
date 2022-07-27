@@ -8,7 +8,7 @@
           <div class="page">
             <Breadcrumb></Breadcrumb>
             <div style="height: 40px"></div>
-            <PageTitle>角色概览</PageTitle>
+            <PageTitle>模组进度</PageTitle>
             <router-view />
           </div>
         </el-main>
